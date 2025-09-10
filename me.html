@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Izzath Saeem | Web Developer & Designer</title>
+  <style>
+    /* Reset & base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background: linear-gradient(135deg, #e0f7fa, #fff9c4);
+      color: #2c3e50;
+      scroll-behavior: smooth;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Header and Navigation */
+    header {
+      background: linear-gradient(90deg, #ff6a00, #ee0979);
+      color: white;
+      padding: 1.5rem 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(255, 106, 0, 0.4);
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    header h1 {
+      font-size: 1.8rem;
+      user-select: none;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+
+    nav {
+      position: relative;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav ul li {
+      user-select: none;
+    }
+
+    nav a {
+      color: #ffd1dc;
+      font-weight: 600;
+      padding: 0.5rem 0.8rem;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      box-shadow: 0 0 5px transparent;
+    }
+
+    nav a:hover,
+    nav a.active {
+      background-color: #ffd1dc;
+      color: #ee0979;
+      box-shadow: 0 0 10px #ff6a00;
+    }
+
+    /* Hamburger Menu */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    /* Hamburger animation when active */
+    .hamburger.active div:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.active div:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active div:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* Responsive nav */
+    @media (max-width: 700px) {
+      nav ul {
+        flex-direction: column;
+        background: linear-gradient(180deg, #ff6a00, #ee0979);
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 180px;
+        border-radius: 0 0 10px 10px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        box-shadow: 0 8px 16px rgba(238,9,121,0.6);
+      }
+      nav ul.show {
+        max-height: 300px; /* enough for 4 links */
+      }
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    /* Sections */
+    section {
+      padding: 3rem 1rem;
+      max-width: 900px;
+      margin: 2rem auto;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(255, 106, 0, 0.2);
+      transition: box-shadow 0.3s ease;
+    }
+    section:hover {
+      box-shadow: 0 15px 40px rgba(238, 9, 121, 0.3);
+    }
+    section h2 {
+      color: #ee0979;
+      margin-bottom: 1rem;
+      font-size: 2rem;
+      border-bottom: 4px solid #ff6a00;
+      display: inline-block;
+      padding-bottom: 0.3rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    /* Skills list */
+    .skills-list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+    .skills-list li {
+      background: linear-gradient(135deg, #ff6a00, #ee0979);
+      padding: 0.6rem 1.4rem;
+      border-radius: 30px;
+      font-weight: 700;
+      color: white;
+      box-shadow: 0 4px 10px rgba(255, 106, 0, 0.5);
+      transition: transform 0.3s ease;
+      cursor: default;
+      user-select: none;
+    }
+    .skills-list li:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 15px rgba(238, 9, 121, 0.7);
+    }
+
+    /* Projects */
+    .project {
+      background: linear-gradient(145deg, #ffe1e1, #fff0f5);
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 1.5rem;
+      border-left: 7px solid #ff6a00;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(255, 106, 0, 0.15);
+      transition: box-shadow 0.4s ease;
+    }
+    .project:hover {
+      box-shadow: 0 10px 30px rgba(238, 9, 121, 0.35);
+      border-left-color: #ee0979;
+    }
+    .project h3 {
+      margin-bottom: 0.4rem;
+      color: #ee0979;
+      font-weight: 700;
+    }
+    .project p {
+      font-size: 1rem;
+      color: #7f5a6e;
+      margin-bottom: 0.7rem;
+    }
+    .project a {
+      color: #ff6a00;
+      font-weight: 700;
+      transition: color 0.3s ease;
+    }
+    .project a:hover {
+      color: #ee0979;
+      text-decoration: underline;
+    }
+
+    /* Contact form */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 600px;
+      margin: auto;
+    }
+    form input,
+    form textarea {
+      padding: 0.85rem;
+      border: 2px solid #ee0979;
+      border-radius: 12px;
+      font-size: 1rem;
+      resize: vertical;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    form input:focus,
+    form textarea:focus {
+      border-color: #ff6a00;
+      outline: none;
+      box-shadow: 0 0 8px #ff6a00;
+    }
+    form button {
+      background: linear-gradient(90deg, #ff6a00, #ee0979);
+      color: white;
+      border: none;
+      padding: 1rem;
+      border-radius: 15px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.4s ease;
+      box-shadow: 0 5px 15px rgba(238, 9, 121, 0.5);
+    }
+    form button:hover {
+      background: linear-gradient(90deg, #ee0979, #ff6a00);
+      box-shadow: 0 7px 20px rgba(255, 106, 0, 0.7);
+    }
+    #formMessage {
+      margin-top: 0.5rem;
+      font-weight: 700;
+      color: #1b5e20;
+      text-align: center;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background: linear-gradient(90deg, #ff6a00, #ee0979);
+      color: white;
+      margin-top: 3rem;
+      user-select: none;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-shadow: 0 0 6px rgba(0,0,0,0.2);
+      border-radius: 0 0 15px 15px;
+    }
+
+    /* Scroll to Top Button */
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(45deg, #ff6a00, #ee0979);
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 12px rgba(238, 9, 121, 0.6);
+      transition: background 0.3s ease;
+      z-index: 1000;
+    }
+    #scrollTopBtn:hover {
+      background: linear-gradient(45deg, #ee0979, #ff6a00);
+    }
+    #scrollTopBtn svg {
+      fill: white;
+      width: 28px;
+      height: 28px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>Izzath Saeem</h1>
+    <nav>
+      <ul id="nav-links">
+        <li><a href="#about" class="active">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger" aria-label="Toggle navigation menu" role="button" tabindex="0">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section id="about">
+  <h2>About Me</h2>
+  <p>Hello! I'm <strong>Izzath Saeem</strong>, a passionate and curious student just beginning my journey into web development and design. I enjoy learning how to build websites and turn creative ideas into real digital experiences. I'm currently exploring HTML, CSS, JavaScript, and UI design tools like Figma.</p>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <ul class="skills-list">
+    <li>HTML5</li>
+    <li>CSS3</li>
+    <li>JavaScript (Intermediate)</li>
+    <li>Responsive Design</li>
+    <li>Figma (UI Design)</li>
+    <li>React.js</li>
+    <li>Git & GitHub</li>
+    <li>Node.js (Basics)</li>
+  </ul>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="project">
+    <h3>Portfolio Website</h3>
+    <p>A personal portfolio website to showcase my skills and projects. Built using HTML, CSS, and JavaScript.</p>
+    <a href="https://your-portfolio-link.com" target="_blank" rel="noopener">View Project</a>
+  </div>
+  <div class="project">
+    <h3>Landing Page (Practice)</h3>
+    <p>A responsive landing page designed as a practice project focusing on layout, spacing, and typography.</p>
+    <a href="https://your-landingpage-link.com" target="_blank" rel="noopener">View Project</a>
+  </div>
+  <div class="project">
+    <h3>UI Design with Figma</h3>
+    <p>A clean UI design project created in Figma to improve user experience and interface skills.</p>
+    <a href="https://www.figma.com/file/your-design-link" target="_blank" rel="noopener">View Design</a>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact Me</h2>
+  <form id="contactForm">
+    <input type="text" placeholder="Your Name" required />
+    <input type="email" placeholder="Your Email" required />
+    <textarea placeholder="Your Message" rows="5" required></textarea>
+    <button type="submit">Send</button>
+  </form>
+  <p id="formMessage"></p>
+  <p style="margin-top: 1rem; text-align:center;">📧 You can also email me directly at: 
+    <a href="mailto:izzathsaeem7@gmail.com" style="color:#ee0979; font-weight:600;">izzathsaeem7@gmail.com</a>
+  </p>
+</section>
+
+<footer>
+  <p>© 2025 Izzath Saeem. All rights reserved.</p>
+</footer>
+
+<button id="scrollTopBtn" aria-label="Scroll to top">
+  <svg viewBox="0 0 24 24"><path d="M12 4l-8 8h16z"/></svg>
+</button>
+
+<script>
+  // Hamburger menu toggle
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+    hamburger.classList.toggle('active');
+  });
+  // Accessibility: toggle with Enter/Space key on hamburger
+  hamburger.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      hamburger.click();
+    }
+  });
+
+  // Highlight active nav link on scroll
+  const sections = document.querySelectorAll('section');
+  const navItems = navLinks.querySelectorAll('a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    const scrollY = window.pageYOffset;
+
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 80;
+      const sectionHeight = section.clientHeight;
+      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+        current = section.getAttribute('id');
+      }
+    });
+
+    navItems.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === `#${current}`) {
+        link.classList.add('active');
+      }
+    });
+  });
+
+  // Scroll to top button logic
+  const scrollBtn = document.getElementById('scrollTopBtn');
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      scrollBtn.style.display = 'flex';
+    } else {
+      scrollBtn.style.display = 'none';
+    }
+  });
+  scrollBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Contact form submission
+  document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    document.getElementById("formMessage").textContent = "Thanks! Your message has been sent.";
+    this.reset();
+  });
+</script>
+
+</body>
+</html>
